@@ -1,11 +1,11 @@
 public class Action {
-    private String action;
+    private String name;
 
-    public String getAction() {
-        return action;
+    public String isName() {
+        return name;
     }
 
-    public void setAction(String action) {
-        this.action = action;
+    public void setName(String name) {
+        this.name = name;
     }
 }

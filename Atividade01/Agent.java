@@ -1,23 +1,26 @@
-public class Agent extends Perception {
-    public void perceives(Enviroment e, String room) {
-        this.setLocation(e.getAgentLocation());
-        if (room.equals("A")) {
-            this.setDirty(e.getIsDirtyA());
-        } else {
-            this.setDirty(e.getIsDirtyB());
+public class Agent {
+    public Perception perceives(Enviroment env) {
+        Perception p = new Perception();
+        if(env.isAgentLocation()) {
+            p.setDirty(env.isDirtyA());
+            p.setLocation(env.isAgentLocation());
+        }else {
+            p.setDirty(env.isDirtyB());
+            p.setLocation(env.isAgentLocation());
         }
-    }
 
-    public Action act() {
+        return p;
+    }  
+
+    public Action act(Perception p) {
         Action a = new Action();
-        if (this.getIsDirty()) {
-            a.setAction("Aspirar a sujeira");
-            this.setDirty(false);
-        } else {
-            if (this.getLocation()) {
-                a.setAction("Mover-se para direita");
-            } else {
-                a.setAction("Mover-se para esquerda");
+        if(p.isDirty()){
+            a.setName("aspirar");
+        }else {
+            if(p.isLocation()) {
+                a.setName("direita");
+            }else {
+                a.setName("esquerda");
             }
         }
         return a;

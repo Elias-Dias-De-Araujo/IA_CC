@@ -2,7 +2,7 @@ public class Perception {
     private boolean location;
     private boolean isDirty;
 
-    public boolean getIsDirty() {
+    public boolean isDirty() {
         return isDirty;
     }
 
@@ -10,7 +10,7 @@ public class Perception {
         this.isDirty = isDirty;
     }
 
-    public boolean getLocation() {
+    public boolean isLocation() {
         return location;
     }
 

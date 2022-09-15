@@ -2,14 +2,32 @@ public class Enviroment {
     private boolean isDirtyA;
     private boolean isDirtyB;
     private boolean agentLocation;
-
+    
     public Enviroment(boolean isDirtyA, boolean isDirtyB, boolean agentLocation) {
         this.isDirtyA = isDirtyA;
         this.isDirtyB = isDirtyB;
         this.agentLocation = agentLocation;
     }
 
-    public boolean getIsDirtyA() {
+    public void update(Action action) {
+        if(action.isName().equalsIgnoreCase("aspirar")) {
+            if(agentLocation) {
+                this.setDirtyA(false);
+            }else {
+                this.setDirtyB(false);
+            }
+        }else if(action.isName().equalsIgnoreCase("direita")) {
+            if(agentLocation) {
+                this.setAgentLocation(false);
+            }
+        }else if(action.isName().equalsIgnoreCase("esquerda")) {
+            if(agentLocation == false) {
+                this.setAgentLocation(true);
+            }
+        }
+    }
+    
+    public boolean isDirtyA() {
         return isDirtyA;
     }
 
@@ -17,7 +35,7 @@ public class Enviroment {
         this.isDirtyA = isDirtyA;
     }
 
-    public boolean getIsDirtyB() {
+    public boolean isDirtyB() {
         return isDirtyB;
     }
 
@@ -25,11 +43,13 @@ public class Enviroment {
         this.isDirtyB = isDirtyB;
     }
 
-    public boolean getAgentLocation() {
+    public boolean isAgentLocation() {
         return agentLocation;
     }
 
-    public void setAgentLocation(boolean agentLocation) {
-        this.agentLocation = agentLocation;
+    public void setAgentLocation(boolean agentLocaltion) {
+        this.agentLocation = agentLocaltion;
     }
+
+    
 }

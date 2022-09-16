@@ -1,3 +1,6 @@
+from No import No
+
+
 class Solucao:
     def bfs(self, city_begin, city_destiny, road_map):
-        return 0
+        node = No(None, 0, [])

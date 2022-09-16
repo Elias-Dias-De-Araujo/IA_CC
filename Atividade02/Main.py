@@ -1,48 +1,48 @@
-from Stat import Stat
-from Transiction import Transiction
-
+from Estado import Estado
+from Transicao import Transicao
+from Mapa import Mapa
+from Solucao import Solucao
 
 road_map = [
-    Stat("Oradea", [Transiction([151, "Sibiu"]), Transiction([71, "Zerind"])]),
-    Stat("Zerind", [Transiction([71, "Oradea"]), Transiction([75, "Arad"])]),
-    Stat("Arad", [Transiction([75, "Zerind"]), Transiction(
-        [140, "Sibiu"]), Transiction([118, "Timisoara"])]),
-    Stat("Timisoara", [Transiction([118, "Arad"]),
-         Transiction([111, "Lugoj"])]),
-    Stat("Lugoj", [Transiction([111, "Timisoara"]),
-         Transiction([70, "Mehadin"])]),
-    Stat("Mehadin", [Transiction([70, "Lugoj"]),
-         Transiction([75, "Drobeta"])]),
-    Stat("Drobeta", [Transiction([75, "Mehadin"]),
-         Transiction([120, "Craiova"])]),
-    Stat("Sibin", [Transiction([151, "Oraden"]), Transiction([140, "Arad"]), Transiction(
-        [99, "Fagaras"]), Transiction([80, "Rimnicu Vielcea"])]),
-    Stat("Rimnicu Vilcea", [Transiction([80, "Sibin"]), Transiction(
-        [97, "Pitesti"]), Transiction([146, "Craiova"])]),
-    Stat("Craiova", [Transiction([146, "Rimnicu Vilcea"]), Transiction(
-        [138, "Pitesti"]), Transiction([120, "Drobeta"])]),
-    Stat("Fagaras", [Transiction([99, "Sibiu"]),
-         Transiction([211, "Bucharest"])]),
-    Stat("Pitesti", [Transiction([97, "Rimnicu Vilcea"]), Transiction(
-        [101, "Bucharest"]), Transiction([138, "Craiova"])]),
-    Stat("Bucharest", [Transiction([211, "Fagaras"]), Transiction(
-        [101, "Pitesti"]), Transiction([90, "Giurgiu"]), Transiction([85, "Urziceni"])]),
-    Stat("Girgiu", [Transiction([90, "Bucharest"])]),
-    Stat("Urziceni", [Transiction([98, "Hirsova"]), Transiction(
-        [142, "Vaslui"]), Transiction([85, "Bucharest"])]),
-    Stat("Hirsova", [Transiction([98, "Urziceni"]),
-         Transiction([86, "Efroie"])]),
-    Stat("Vaslui", [Transiction([142, "Urziceni"]),
-         Transiction([92, "Iasi"])]),
-    Stat("Iasi", [Transiction([92, "Vaslui"]), Transiction([87, "Neamt"])]),
-    Stat("Eforie", [Transiction([86, "Hirsova"])]),
-    Stat("Neamt", [Transiction([87, "Iasi"])])
+    Estado("Oradea", [Transicao([151, "Sibiu"]),
+           Transicao([71, "Zerind"])]),
+    Estado("Zerind", [Transicao([71, "Oradea"]), Transicao([75, "Arad"])]),
+    Estado("Arad", [Transicao([75, "Zerind"]), Transicao(
+        [140, "Sibiu"]), Transicao([118, "Timisoara"])]),
+    Estado("Timisoara", [Transicao([118, "Arad"]),
+                         Transicao([111, "Lugoj"])]),
+    Estado("Lugoj", [Transicao([111, "Timisoara"]),
+                     Transicao([70, "Mehadin"])]),
+    Estado("Mehadin", [Transicao([70, "Lugoj"]),
+                       Transicao([75, "Drobeta"])]),
+    Estado("Drobeta", [Transicao([75, "Mehadin"]),
+                       Transicao([120, "Craiova"])]),
+    Estado("Sibin", [Transicao([151, "Oraden"]), Transicao([140, "Arad"]), Transicao(
+        [99, "Fagaras"]), Transicao([80, "Rimnicu Vielcea"])]),
+    Estado("Rimnicu Vilcea", [Transicao([80, "Sibin"]), Transicao(
+        [97, "Pitesti"]), Transicao([146, "Craiova"])]),
+    Estado("Craiova", [Transicao([146, "Rimnicu Vilcea"]), Transicao(
+        [138, "Pitesti"]), Transicao([120, "Drobeta"])]),
+    Estado("Fagaras", [Transicao([99, "Sibiu"]),
+                       Transicao([211, "Bucharest"])]),
+    Estado("Pitesti", [Transicao([97, "Rimnicu Vilcea"]), Transicao(
+        [101, "Bucharest"]), Transicao([138, "Craiova"])]),
+    Estado("Bucharest", [Transicao([211, "Fagaras"]), Transicao(
+        [101, "Pitesti"]), Transicao([90, "Giurgiu"]), Transicao([85, "Urziceni"])]),
+    Estado("Girgiu", [Transicao([90, "Bucharest"])]),
+    Estado("Urziceni", [Transicao([98, "Hirsova"]), Transicao(
+        [142, "Vaslui"]), Transicao([85, "Bucharest"])]),
+    Estado("Hirsova", [Transicao([98, "Urziceni"]),
+                       Transicao([86, "Efroie"])]),
+    Estado("Vaslui", [Transicao([142, "Urziceni"]),
+                      Transicao([92, "Iasi"])]),
+    Estado("Iasi", [Transicao([92, "Vaslui"]), Transicao([87, "Neamt"])]),
+    Estado("Eforie", [Transicao([86, "Hirsova"])]),
+    Estado("Neamt", [Transicao([87, "Iasi"])])
 ]
 
-for item in road_map:
-    name = item.name
-    transiction = ""
-    for trans in item.transictions:
-        transiction += " (" + \
-            str(trans.transiction[0]) + "," + trans.transiction[1] + "),"
-    print(name + " : " + transiction.rstrip(","))
+mapa = Mapa(road_map)
+
+solucao = Solucao()
+
+solucao.bfs("Arad", "Bucharest", road_map)

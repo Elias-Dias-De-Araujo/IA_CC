@@ -1,5 +1,6 @@
 class No:
-    def __init__(self, parent, distance, childrens):
+    def __init__(self, parent, name, distance, childrens):
         self.parent = parent
+        self.name = name
         self.parent = distance
-        self.parent = childrens
+        self.childrens = childrens

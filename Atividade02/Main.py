@@ -19,7 +19,7 @@ road_map = [
                        Transicao([120, "Craiova"])]),
     Estado("Sibiu", [Transicao([151, "Oradea"]), Transicao([140, "Arad"]), Transicao(
         [99, "Fagaras"]), Transicao([80, "Rimnicu Vilcea"])]),
-    Estado("Rimnicu Vilcea", [Transicao([80, "Sibin"]), Transicao(
+    Estado("Rimnicu Vilcea", [Transicao([80, "Sibiu"]), Transicao(
         [97, "Pitesti"]), Transicao([146, "Craiova"])]),
     Estado("Craiova", [Transicao([146, "Rimnicu Vilcea"]), Transicao(
         [138, "Pitesti"]), Transicao([120, "Drobeta"])]),

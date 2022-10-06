@@ -1,7 +1,6 @@
 from Estado import Estado
 from Transicao import Transicao
 from Mapa import Mapa
-from Solucao import Solucao
 
 road_map = [
     Estado("Oradea", [Transicao([151, "Sibiu"]),
@@ -42,7 +41,4 @@ road_map = [
 ]
 
 mapa = Mapa(road_map)
-
-solucao = Solucao()
-
-solucao.bfs("Arad", "Bucharest", road_map)
+mapa.printRoadMap()

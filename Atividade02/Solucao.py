@@ -23,8 +23,9 @@ class Solucao:
             for child in no.childrens:
                 childrensChild = self.getChildren(
                     child.transiction[1], road_map)
+                distance_children = child.transiction[0] + no.distance
                 newChild = No(
-                    no, child.transiction[1], child.transiction[0], childrensChild)
+                    no, child.transiction[1], distance_children, childrensChild)
                 if ((not(newChild.name in explorados)) and (not(newChild.name in bordaNames))):
                     if(newChild.name == city_destiny):
                         self.printWay(newChild)
@@ -34,10 +35,9 @@ class Solucao:
 
     def printWay(self, No):
         way = []
-        distance = 0
+        distance = No.distance
         while No != None:
             way.append(No.name)
-            distance += No.distance
             No = No.parent
         way.reverse()
         print("Caminho percorrido:")

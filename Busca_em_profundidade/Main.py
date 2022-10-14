@@ -1,6 +1,7 @@
 from Estado import Estado
 from Transicao import Transicao
 from Mapa import Mapa
+from Solucao import Solucao
 
 road_map = [
     Estado("Oradea", [Transicao([151, "Sibiu"]),
@@ -19,16 +20,16 @@ road_map = [
     Estado("Sibiu", [Transicao([151, "Oradea"]), Transicao([140, "Arad"]), Transicao(
         [99, "Fagaras"]), Transicao([80, "Rimnicu Vilcea"])]),
     Estado("Rimnicu Vilcea", [Transicao([80, "Sibiu"]), Transicao(
-        [97, "Pitest"]), Transicao([146, "Craiova"])]),
+        [97, "Pitesti"]), Transicao([146, "Craiova"])]),
     Estado("Craiova", [Transicao([146, "Rimnicu Vilcea"]), Transicao(
-        [138, "Pitest"]), Transicao([120, "Drobeta"])]),
+        [138, "Pitesti"]), Transicao([120, "Drobeta"])]),
     Estado("Fagaras", [Transicao([99, "Sibiu"]),
                        Transicao([211, "Bucharest"])]),
-    Estado("Pitest", [Transicao([97, "Rimnicu Vilcea"]), Transicao(
+    Estado("Pitesti", [Transicao([97, "Rimnicu Vilcea"]), Transicao(
         [101, "Bucharest"]), Transicao([138, "Craiova"])]),
     Estado("Bucharest", [Transicao([211, "Fagaras"]), Transicao(
-        [101, "Pitest"]), Transicao([90, "Giurgiu"]), Transicao([85, "Urziceni"])]),
-    Estado("Girgiu", [Transicao([90, "Bucharest"])]),
+        [101, "Pitesti"]), Transicao([90, "Giurgiu"]), Transicao([85, "Urziceni"])]),
+    Estado("Giurgiu", [Transicao([90, "Bucharest"])]),
     Estado("Urziceni", [Transicao([98, "Hirsova"]), Transicao(
         [142, "Vaslui"]), Transicao([85, "Bucharest"])]),
     Estado("Hirsova", [Transicao([98, "Urziceni"]),
@@ -41,4 +42,7 @@ road_map = [
 ]
 
 mapa = Mapa(road_map)
-mapa.printRoadMap()
+
+solucao = Solucao()
+
+solucao.bp("Arad", "Bucharest", mapa)

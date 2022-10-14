@@ -20,16 +20,16 @@ road_map = [
     Estado("Sibiu", [Transicao([151, "Oradea"]), Transicao([140, "Arad"]), Transicao(
         [99, "Fagaras"]), Transicao([80, "Rimnicu Vilcea"])]),
     Estado("Rimnicu Vilcea", [Transicao([80, "Sibiu"]), Transicao(
-        [97, "Pitest"]), Transicao([146, "Craiova"])]),
+        [97, "Pitesti"]), Transicao([146, "Craiova"])]),
     Estado("Craiova", [Transicao([146, "Rimnicu Vilcea"]), Transicao(
-        [138, "Pitest"]), Transicao([120, "Drobeta"])]),
+        [138, "Pitesti"]), Transicao([120, "Drobeta"])]),
     Estado("Fagaras", [Transicao([99, "Sibiu"]),
                        Transicao([211, "Bucharest"])]),
-    Estado("Pitest", [Transicao([97, "Rimnicu Vilcea"]), Transicao(
+    Estado("Pitesti", [Transicao([97, "Rimnicu Vilcea"]), Transicao(
         [101, "Bucharest"]), Transicao([138, "Craiova"])]),
     Estado("Bucharest", [Transicao([211, "Fagaras"]), Transicao(
-        [101, "Pitest"]), Transicao([90, "Giurgiu"]), Transicao([85, "Urziceni"])]),
-    Estado("Girgiu", [Transicao([90, "Bucharest"])]),
+        [101, "Pitesti"]), Transicao([90, "Giurgiu"]), Transicao([85, "Urziceni"])]),
+    Estado("Giurgiu", [Transicao([90, "Bucharest"])]),
     Estado("Urziceni", [Transicao([98, "Hirsova"]), Transicao(
         [142, "Vaslui"]), Transicao([85, "Bucharest"])]),
     Estado("Hirsova", [Transicao([98, "Urziceni"]),
@@ -41,8 +41,31 @@ road_map = [
     Estado("Neamt", [Transicao([87, "Iasi"])])
 ]
 
+heuristic = {
+    "Arad": 366,
+    "Bucharest": 0,
+    "Craiova": 160,
+    "Drobeta": 242,
+    "Eforie": 161,
+    "Fagaras": 176,
+    "Giurgiu": 77,
+    "Hirsova": 151,
+    "Iasi": 226,
+    "Lugoj": 244,
+    "Mehadia": 241,
+    "Neamt": 234,
+    "Oradea": 380,
+    "Pitesti": 100,
+    "Rimnicu Vilcea": 193,
+    "Sibiu": 253,
+    "Timisoara": 329,
+    "Urziceni": 80,
+    "Vaslui": 199,
+    "Zerind": 374,
+}
+
 mapa = Mapa(road_map)
 
 solucao = Solucao()
 
-solucao.bcu("Arad", "Bucharest", road_map)
+solucao.bh("Arad", "Bucharest", mapa, heuristic)
